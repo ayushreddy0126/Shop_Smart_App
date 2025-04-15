@@ -1,70 +1,219 @@
-# Getting Started with Create React App
+# Shop Smart App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Shop Smart Logo](https://via.placeholder.com/150?text=Shop+Smart)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Shop Smart is an intelligent shopping assistant that optimizes your grocery shopping experience by calculating the most efficient path through the store. The app uses store layout data and aisle information to create the shortest route for your shopping list, saving you time and making grocery trips more efficient.
 
-### `npm start`
+Currently optimized for HEB stores with plans to expand to Walmart, Costco, and other major retailers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🛒 **Shopping List Management**: Create, save, and edit shopping lists
+- 🗺️ **Optimal Path Generation**: Get the most efficient route through the store based on your shopping list
+- 📊 **Interactive Store Map**: View your path visually overlaid on the store layout
+- 🏪 **Store-Specific Data**: Currently optimized for HEB stores
+- 📍 **Aisle-Level Precision**: Finds items based on precise aisle and shelf locations
+- 🔍 **Product Search**: Easily find products and their exact locations in the store
+- 📋 **Category Organization**: Browse products by department and category
+- ⏱️ **Time Estimation**: Get estimates of how long your shopping trip will take
+- 📱 **Mobile-Friendly Design**: Optimized for use while shopping in-store
 
-### `npm test`
+## How It Works
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Create Your Shopping List**: Add items to your list either by searching or browsing categories
+2. **Generate Optimal Path**: The app calculates the most efficient route based on product locations
+3. **Follow In-Store Guidance**: Navigate through the store following the optimized path
+4. **Check Off Items**: Mark items as collected as you shop
+5. **Save Time**: Complete your shopping in the most time-efficient manner possible
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend
+- React Native for cross-platform mobile development
+- Redux for state management
+- React Navigation for app navigation
+- Styled components for UI design
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend
+- Node.js with Express
+- MongoDB for data storage
+- RESTful API architecture
+- Pathfinding algorithms for route optimization
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Integration
+- Store layout mapping system
+- Product database with location data
+- Optimization algorithms
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB (v4.4 or higher)
+- React Native environment setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Local Development Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository
+   ```bash
+   git clone https://github.com/ayushreddy0126/Shop_Smart_App.git
+   cd Shop_Smart_App
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install dependencies
+   ```bash
+   # Install backend dependencies
+   cd server
+   npm install
 
-## Learn More
+   # Install frontend dependencies
+   cd ../client
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Set up environment variables
+   ```bash
+   # In the server directory, create a .env file
+   cp .env.example .env
+   # Edit the .env file with your database credentials
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start MongoDB
+   ```bash
+   # Make sure MongoDB is running on your system
+   mongod --dbpath /path/to/your/data/directory
+   ```
 
-### Code Splitting
+5. Start development servers
+   ```bash
+   # Start backend server (from server directory)
+   npm run dev
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   # Start React Native development server (from client directory)
+   npm start
+   ```
 
-### Analyzing the Bundle Size
+6. Run on a device or emulator
+   ```bash
+   # For iOS
+   npm run ios
+   
+   # For Android
+   npm run android
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Endpoints
 
-### Making a Progressive Web App
+The application provides the following RESTful API endpoints:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Authentication
+- `POST /api/auth/register`: Register a new user
+- `POST /api/auth/login`: Authenticate a user
+- `POST /api/auth/logout`: Log out a user
 
-### Advanced Configuration
+### Shopping Lists
+- `GET /api/lists`: Get all shopping lists for a user
+- `GET /api/lists/:id`: Get a specific shopping list
+- `POST /api/lists`: Create a new shopping list
+- `PUT /api/lists/:id`: Update a shopping list
+- `DELETE /api/lists/:id`: Delete a shopping list
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Products
+- `GET /api/products`: Get all products
+- `GET /api/products/:id`: Get details for a specific product
+- `GET /api/products/search`: Search for products
+- `GET /api/products/category/:category`: Get products by category
 
-### Deployment
+### Stores
+- `GET /api/stores`: Get all available stores
+- `GET /api/stores/:id`: Get details for a specific store
+- `GET /api/stores/nearby`: Find stores near a location
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Path Optimization
+- `POST /api/optimize`: Generate an optimized shopping path
+- `GET /api/optimize/history`: Get previous optimizations
 
-### `npm run build` fails to minify
+Detailed API documentation is available in the [API Documentation](docs/api.md) file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Database Schema
+
+### Users Collection
+- `_id`: Unique identifier
+- `name`: User's name
+- `email`: User's email address (unique)
+- `password`: Hashed password
+- `createdAt`: Account creation timestamp
+- `updatedAt`: Last update timestamp
+
+### ShoppingLists Collection
+- `_id`: Unique identifier
+- `userId`: Reference to the user owner
+- `name`: List name
+- `items`: Array of product references and quantities
+- `storeId`: Target store for shopping
+- `createdAt`: List creation timestamp
+- `updatedAt`: Last update timestamp
+
+### Products Collection
+- `_id`: Unique identifier
+- `name`: Product name
+- `category`: Product category
+- `description`: Product description
+- `price`: Price information
+- `imageUrl`: Product image reference
+
+### Stores Collection
+- `_id`: Unique identifier
+- `name`: Store name (e.g., "HEB")
+- `location`: Geographical coordinates
+- `address`: Physical address
+- `layout`: Store layout information
+- `hours`: Operating hours
+
+### ProductLocations Collection
+- `_id`: Unique identifier
+- `productId`: Reference to the product
+- `storeId`: Reference to the store
+- `aisle`: Aisle number
+- `section`: Section within the aisle
+- `shelf`: Shelf position
+- `coordinates`: X,Y coordinates on store map
+
+## Future Enhancements
+
+- **Additional Store Support**: Plans to add Walmart, Costco, and other major retailers
+- **Price Comparison**: Compare product prices across different stores
+- **Sale Alerts**: Notifications for when items on your list are on sale
+- **Receipt Scanning**: Add items to lists by scanning receipts
+- **Voice Commands**: Add hands-free operation
+- **Dietary Filters**: Filter products based on dietary restrictions
+- **User Reviews**: Allow users to review and rate products
+- **Budget Tracking**: Monitor spending as you shop
+- **Shared Lists**: Collaborate on shopping lists with family members
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and contribution process.
+
+## Team
+
+- **Mandadi Ayush Reddy** - Lead Developer
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- HEB for store layout reference data
+- All contributors who have helped shape this project
+- Open source libraries and tools that made this project possible
